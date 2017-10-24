@@ -1,0 +1,29 @@
+# Compiled python modules.
+*.pyc
+
+# Cython
+*.pyd
+
+# Setuptools distribution folder.
+/dist/
+/build/
+
+# C extensions
+*.so
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+/.eggs/
+
+# Mac OS X
+.DS_Store
+
+# Editors
+/.vscode/
+/.idea/
+
+# Things specific to this project #
+###################################
+dppy/input/dataset.cpp
+dppy/metrics/base.cpp
+dppy/pattern.cpp
