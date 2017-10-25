@@ -3,6 +3,7 @@
 import io
 from wrapper import RegexWrapper
 from wrapper import remove_diacritics
+import metrics
 
 def exercise_output(template):
     """Outputs the way specified in the exercise"""
@@ -18,8 +19,6 @@ def exercise_output(template):
     Cor: {9}
     Ar-cond: {10}
     Opcionais: {11}\n"""
-    optionals = "completo" if len(template["Complete"]) > 0 \
-                                     else template["Optionals"]
     return result.format(
         template["Brand"],
         template["Model"],
@@ -32,7 +31,7 @@ def exercise_output(template):
         template["Steering"],
         template["Color"],
         template["Air-Conditioning"],
-        optionals
+        template["Optionals"]
     )
 
 def main():
@@ -51,15 +50,29 @@ def main():
         "Odometer": r"(\d+\.?\d+)[^\w]?km",
         "Fuel": r"(alcool|flex|gasolina|diesel|gvn)",
         "Gear": r"[^\w](manual|automatico)[^\w]",
-        "Steering": r"(eletric\w?|hidraulic\w?|mecan\w?)",
+        "Steering": r"(eletric\w?|hidraulic\w?|mecan\w*)",
         "Color": r"(branc\w?|prata|pret\w?|cinza|vermelh\w?|marrom|verde|azul)",
         "Air-Conditioning": r"[^\w](ar|ac)[^\w]",
         "Optionals": r"[^\w](couro|radio|cd|mp3|alarme|airbag|rodas)[^\w]",
         "Complete": r"comp\w+"
     })
+    templates = []
     for input_ in inputs:
         template = wrapper.fill_template(input_)
         print(exercise_output(template))
+        templates.append(template)
+
+
+
+    precision, recall = metrics.compute_metrics(templates)
+    avg_precision = precision.mean(skipna=True)
+    avg_recall = recall.mean(skipna=True)
+    print('Precision:\n' +  str(precision))
+    print('\nRecall:\n' +  str(recall))
+
+    print('\n\nAverage Precision: %.4f' % avg_precision)
+    print('Average Recall: %.4f' % avg_recall)
+
 
 if __name__ == "__main__":
     main()

@@ -2,6 +2,7 @@
 
 import re
 
+
 class RegexWrapper(object):
     """A regular expression-based wrapper for extracting information"""
 
@@ -27,7 +28,7 @@ class RegexWrapper(object):
         for key in self.template:
             match = re.search(self.template[key], query_str, re.I)
             res = []
-            if match is None: # if there was no match for the regex in the query
+            if match is None:  # if there was no match for the regex in the query
                 result[key] = ""
                 continue
             if match is not None and not match.groups():
@@ -38,4 +39,14 @@ class RegexWrapper(object):
                     break
                 res += [group]
             result[key] = " ".join(res)
+
+        optionals = "completo" if len(result["Complete"]) > 0 \
+            else result["Optionals"]
+        air_conditioning = "sim" if len(result["Complete"]) > 0 \
+            else result["Optionals"]
+
+        result['Air-Conditioning'] = air_conditioning
+        result['Optionals'] = optionals
+        del result['Complete']
+
         return result

@@ -15,4 +15,6 @@ def remove_diacritics(string):
     string : str
         The string with its diacritics removed
     """
-    return unidecode(string).encode("ascii")
+    uni = unidecode(string)
+    # r = uni.encode("ascii")
+    return uni
