@@ -22,38 +22,40 @@ class RegexWrapper(object):
             raise ValueError("The 'template' parameter must be a dictionary")
         self.template = template
 
-    def parse_match(self, match, result_dir, key):
+    def parse_match(self, match, key, substring):
         """Parses the match result"""
         res = []
         if match is None:  # if there was no match for the regex in the query
-            return ""
+            return "", substring
         if match is not None and not isinstance(match, str) and not match.groups():
-            return key
+            substring = substring[:match.start()] + substring[match.end():]
+            return key, substring
         elif isinstance(match, str):
-            return match
+            substring = substring.replace(match, "")
+            return match, substring
         for group in match.groups():
             if group is None:
                 break
             res += [group]
-        return " ".join(res)
+        substring = substring[:match.start()] + substring[match.end():]
+        return " ".join(res), substring
 
     def fill_template(self, query_str):
         """Fills the template given in self.template"""
         result = dict()
+        substring = query_str
         for key in self.template:
             if key == "Optionals":
-                matches = re.findall(self.template[key], query_str, re.I)
-                ms = []
-                for match in matches:
-                    m = self.parse_match(match, result, key)
-                    ms.append(m)
-                if len(ms) > 0:
-                    result["Optionals"] = ", ".join(ms)
-                else:
-                    result["Optionals"] = ""
                 continue
-            match = re.search(self.template[key], query_str, re.I)
-            result[key] = self.parse_match(match, result, key)
+            match = re.search(self.template[key], substring, re.I)
+            result[key], substring = self.parse_match(match, key, substring)
+        remaining_words = []
+        for word in substring.split(","):
+            clean_word = word.strip().lower().replace(",", "").replace(".", "")
+            if len(clean_word) < 1:
+                continue
+            remaining_words.append(clean_word)
+        result["Optionals"] = ", ".join(remaining_words)
         if len(result["Complete"]) > 0:
             optionals = ["completo"]
             if len(result["Optionals"]) > 0:

@@ -9,15 +9,15 @@ TEMPLATE = {
     "Brand": r"(fiat|gm|chevrolet|wv|volkswagen|ford)",
     "Model": r"^(\w+)[^\w]?([a-zA-Z]\w*)?[^\w]?([a-zA-Z]\w*)?[^\w]",
     "Price": r"r\$[^\w]?(\d+\.\d+\,?\d{0,2})",
-    "Motor": r"[^\w\.\,](\d\.\d)[^\w\.\,]",
-    "Year": r"[^\w\.\,](\d{2,4})[^\w\.\,]",
-    "Odometer": r"(\d+\.?\d+)[^\w]?km",
+    "Motor": r"(\d\.\d)[^\w\.\,]",
+    "Year": r"(\d{2,4})[^\w\.\,]",
+    "Odometer": r"(\d+\.?\d+)[^\w]?kms?",
     "Fuel": r"(alcool|flex|gasolina|diesel|gvn)",
-    "Gear": r"[^\w](manual|automatico)[^\w]",
+    "Gear": r"(manual|automatico)[^\w]",
     "Steering": r"(eletric\w?|hidraulic\w?|mecan\w*)",
     "Color": r"(branc\w?|prata|pret\w?|cinza|vermelh\w?|marrom|verde|azul)",
-    "Air-Conditioning": r"[^\w](ar|ac)[^\w]",
-    "Optionals": r"[^\w](couro|radio|cd|mp3|alarme|airbag|rodas|\d+p|\d+port\w{0,2})[^\w]",
+    "Air-Conditioning": r"[^\w](ar|ac)",
+    "Optionals": r"(couro|radio|cd|mp3|alarme|airbag|rodas|\d+p|\d+port\w{0,2})",
     "Complete": r"comp\w+"
 }
 

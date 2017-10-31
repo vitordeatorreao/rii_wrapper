@@ -42,7 +42,7 @@ correct_answers = [
         'Fuel': 'flex',
         'Gear': 'manual',
         'Steering': '',
-        'Color': 'marron',
+        'Color': 'marrom',
         'Air-Conditioning': '',
         'Optionals': '',
      },
@@ -89,7 +89,7 @@ correct_answers = [
         'Steering': 'mecanica',
         'Color': 'azul',
         'Air-Conditioning': 'sim',
-        'Optionals': 'completo',
+        'Optionals': 'completo, v6',
      },
 
     {
@@ -109,7 +109,7 @@ correct_answers = [
 
     {
         'Brand': '',
-        'Model': 'CORSA CLASSIC',
+        'Model': 'CORSA CLASSIC SPIRIT',
         'Price': '19.500,00',
         'Motor': '',
         'Year': '08',
