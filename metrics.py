@@ -148,7 +148,7 @@ correct_answers = [
         'Gear': '',
         'Steering': '',
         'Color': 'prata',
-        'Air-Conditioning': 'não',
+        'Air-Conditioning': 'nao',
         'Optionals': 'completo, 4portas',
      },
 ]
