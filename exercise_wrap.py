@@ -53,7 +53,7 @@ def main():
         "Steering": r"(eletric\w?|hidraulic\w?|mecan\w*)",
         "Color": r"(branc\w?|prata|pret\w?|cinza|vermelh\w?|marrom|verde|azul)",
         "Air-Conditioning": r"[^\w](ar|ac)[^\w]",
-        "Optionals": r"[^\w](couro|radio|cd|mp3|alarme|airbag|rodas)[^\w]",
+        "Optionals": r"[^\w](couro|radio|cd|mp3|alarme|airbag|rodas|\d+p|\d+port\w{0,2})[^\w]",
         "Complete": r"comp\w+"
     })
     templates = []

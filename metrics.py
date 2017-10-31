@@ -59,7 +59,7 @@ correct_answers = [
         'Steering': '',
         'Color': 'prata',
         'Air-Conditioning': 'sim',
-        'Optionals': '4p, completo',
+        'Optionals': 'completo, 4p',
      },
     #   da a20 6 cil:  com comando 250s e escap. 6x2 cambio 5 marchas
     {
@@ -89,7 +89,7 @@ correct_answers = [
         'Steering': 'mecanica',
         'Color': 'azul',
         'Air-Conditioning': 'sim',
-        'Optionals': 'v6, completa',
+        'Optionals': 'completo',
      },
 
     {
@@ -99,12 +99,12 @@ correct_answers = [
         'Motor': '1.4',
         'Year': '14',
         'Odometer': '',
-        'Fuel': 'FLEX',
+        'Fuel': 'flex',
         'Gear': '',
-        'Steering': '',
+        'Steering': 'mecanica',
         'Color': 'branca',
         'Air-Conditioning': '',
-        'Optionals': 'mecam',
+        'Optionals': '',
      },
 
     {
@@ -119,7 +119,7 @@ correct_answers = [
         'Steering': '',
         'Color': 'preto',
         'Air-Conditioning': 'sim',
-        'Optionals': 'spirit, competo',
+        'Optionals': 'completo',
      },
 
     {
@@ -148,8 +148,8 @@ correct_answers = [
         'Gear': '',
         'Steering': '',
         'Color': 'prata',
-        'Air-Conditioning': 'sim',
-        'Optionals': 'elx, 4portas, completo menos ac, otimo estado',
+        'Air-Conditioning': 'não',
+        'Optionals': 'completo, 4portas',
      },
 ]
 
@@ -168,9 +168,11 @@ def compute_metrics(templates):
         tf = []
         cef = []
         for field in correct_answer.keys():
+            answer = template[field].strip().lower()
+            correct = correct_answer[field].strip().lower()
             tef.append(int(template[field] != ''))
             tf.append(int(correct_answer[field] != ''))
-            cef.append(int(template[field] != '' and template[field] == correct_answer[field]))
+            cef.append(int(template[field] != '' and answer == correct))
         total_extracted_fields.loc[len(total_extracted_fields)] = tef
         total_fields.loc[len(total_extracted_fields)] = tf
         correctly_extracted_fields.loc[len(total_extracted_fields)] = cef
