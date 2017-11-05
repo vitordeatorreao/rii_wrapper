@@ -1,9 +1,8 @@
-import numpy as np
 import pandas as pd
 
 correct_answers = [
     {
-        'Brand': '',
+        'Brand': 'GM',
         'Model': 'S10',
         'Price': '',
         'Motor': '2.8',
@@ -18,7 +17,7 @@ correct_answers = [
      },
 
     {
-        'Brand': '',
+        'Brand': 'CHEVROLET',
         'Model': 'ONIX LT',
         'Price': '38.990,00',
         'Motor': '1.4',
@@ -42,7 +41,7 @@ correct_answers = [
         'Fuel': 'flex',
         'Gear': 'manual',
         'Steering': '',
-        'Color': 'marrom',
+        'Color': 'marron',
         'Air-Conditioning': '',
         'Optionals': '',
      },
@@ -74,7 +73,7 @@ correct_answers = [
         'Steering': 'mecanica',
         'Color': '',
         'Air-Conditioning': '',
-        'Optionals': '', # TODO Ver opcionais***
+        'Optionals': 'da a20 6 cil:  com comando 250s e escap 6x2 cambio 5 marchas',
      },
 
     {
@@ -101,7 +100,7 @@ correct_answers = [
         'Odometer': '',
         'Fuel': 'flex',
         'Gear': '',
-        'Steering': 'mecanica',
+        'Steering': 'mecam',
         'Color': 'branca',
         'Air-Conditioning': '',
         'Optionals': '',
@@ -138,7 +137,7 @@ correct_answers = [
      },
 
     {
-        'Brand': '',
+        'Brand': 'FIAT',
         'Model': 'PALIO',
         'Price': '20.490,00',
         'Motor': '1.0',
@@ -149,7 +148,7 @@ correct_answers = [
         'Steering': '',
         'Color': 'prata',
         'Air-Conditioning': 'nao',
-        'Optionals': 'completo, 4portas',
+        'Optionals': 'completo, elx, 4portas, menos, otimo estado',
      },
 ]
 
